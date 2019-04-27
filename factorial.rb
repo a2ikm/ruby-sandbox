@@ -1,11 +1,15 @@
 #!/usr/bin/env ruby
 
 def factorial(n)
+  factorial_internal(n, 1)
+end
+
+def factorial_internal(n, accum)
   case n
   when 0
-    1
+    accum
   else
-    n * factorial(n-1)
+    factorial_internal(n - 1, n*accum)
   end
 end
 
