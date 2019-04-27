@@ -4,20 +4,22 @@ def quicksort(array)
   return [] if array.empty?
 
   pivot = array.shift
-  smaller, larger = partition(pivot, array)
-  quicksort(smaller) + [pivot] + quicksort(larger)
+  smaller, equal, larger = partition(pivot, array)
+  quicksort(smaller) + [pivot] + equal + quicksort(larger)
 end
 
 def partition(pivot, array)
-  smaller, larger = [], []
+  smaller, equal, larger = [], [], []
   array.each do |item|
-    if item <= pivot
+    if item < pivot
       smaller << item
-    else
+    elsif item > pivot
       larger << item
+    else
+      equal << item
     end
   end
-  return smaller, larger
+  return smaller, equal, larger
 end
 
 if $0 == __FILE__
