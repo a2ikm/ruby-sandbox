@@ -36,9 +36,14 @@ class TestClass < Test::Unit::TestCase
         @hello
       end
 
+      def hello
+        @hello
+      end
+
       @hello = 123
     }
 
     assert_equal 123, a.hello
+    assert_nil a.new.hello
   end
 end
